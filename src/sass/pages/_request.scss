@@ -1,0 +1,67 @@
+.request {
+  display: flex;
+
+  justify-content: center;
+  align-content: center;
+  box-shadow: $shadow-light;
+  padding: 2rem;
+
+  &-favorite {
+    &__box {
+      margin: 1rem;
+      text-align: center;
+      box-shadow: 0 0.1rem 0.2rem rgba($color-black, 0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+
+      &-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+    }
+
+    &__name {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    &__price {
+      font-size: 1rem;
+      font-weight: 300;
+      color: $color-primary-dark;
+    }
+  }
+
+  &__todo-button {
+    margin: auto;
+    margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-time {
+    border: $color-primary-dark 0.5px dashed;
+
+    &__legend {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-left: 1rem;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      color: $color-primary-dark;
+    }
+
+    &__box-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.greyy {
+  border: darkgray solid 2px;
+  padding: 5px;
+}
+.greenn {
+  border: darkgreen solid 2px;
+  padding: 5px;
+}
+#imgp {
+  display: block;
+}
