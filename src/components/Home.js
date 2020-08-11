@@ -34,7 +34,7 @@ import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
 import TimelineConnector from "@material-ui/lab/TimelineConnector";
 import TimelineContent from "@material-ui/lab/TimelineContent";
 import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
-import TimelineDot from "@material-ui/lab/TimelineDot";
+//import TimelineDot from "@material-ui/lab/TimelineDot";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 import HotelIcon from "@material-ui/icons/Hotel";
@@ -359,9 +359,8 @@ class Home extends Component {
                   <Typography variant="h6" component="h1"></Typography>
                 </TimelineOppositeContent>
                 <TimelineSeparator>
-                  <TimelineDot>
-                    <LaptopMacIcon />
-                  </TimelineDot>
+                  <LaptopMacIcon />
+
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent>
@@ -379,9 +378,8 @@ class Home extends Component {
               </TimelineItem>
               <TimelineItem>
                 <TimelineSeparator>
-                  <TimelineDot color="primary">
-                    <DepartureBoardIcon />
-                  </TimelineDot>
+                  <DepartureBoardIcon />
+
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent>
@@ -400,9 +398,8 @@ class Home extends Component {
               </TimelineItem>
               <TimelineItem>
                 <TimelineSeparator>
-                  <TimelineDot color="primary" variant="outlined">
-                    <VpnLockIcon />
-                  </TimelineDot>
+                  <VpnLockIcon />
+
                   <TimelineConnector className={classes.secondaryTail} />
                 </TimelineSeparator>
                 <TimelineContent>
@@ -421,9 +418,7 @@ class Home extends Component {
               </TimelineItem>
               <TimelineItem>
                 <TimelineSeparator>
-                  <TimelineDot color="secondary">
-                    <RepeatIcon />
-                  </TimelineDot>
+                  <RepeatIcon />
                 </TimelineSeparator>
                 <TimelineContent>
                   <Paper elevation={3} className={classes.paper}>
