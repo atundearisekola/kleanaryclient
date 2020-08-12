@@ -1,47 +1,21 @@
-import Button from "@material-ui/core/Button";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-//import Collapse from '@material-ui/core/Collapse';
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-//import LockIcon from '@material-ui/icons/Lock'
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-//import { GitHubIcon } from 'rmw-shell/lib/components/Icons'
-//import { Helmet } from 'react-helmet'
-import { NavLink } from "react-router-dom";
+
 import { withStyles } from "@material-ui/core/styles";
-import Logo from "../logo.svg";
-import MobileStepper from "@material-ui/core/MobileStepper";
+
 import Paper from "@material-ui/core/Paper";
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
 
-import Grid from "@material-ui/core/Grid";
-//import Timeline from "@material-ui/lab/Timeline";
-//import TimelineItem from "@material-ui/lab/TimelineItem";
-//import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
-//import TimelineConnector from "@material-ui/lab/TimelineConnector";
-//import TimelineContent from "@material-ui/lab/TimelineContent";
-//import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
-//import TimelineDot from "@material-ui/lab/TimelineDot";
-import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineOppositeContent,
-  TimelineDot
-} from "@material-ui/lab";
+import Timeline from "@material-ui/lab/Timeline";
+import TimelineItem from "@material-ui/lab/TimelineItem";
+import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
+import TimelineConnector from "@material-ui/lab/TimelineConnector";
+import TimelineContent from "@material-ui/lab/TimelineContent";
+import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
+import TimelineDot from "@material-ui/lab/TimelineDot";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
 
 import RepeatIcon from "@material-ui/icons/Repeat";
@@ -50,35 +24,6 @@ import VpnLockIcon from "@material-ui/icons/VpnLock";
 
 import "../App.css";
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-const tutorialSteps = [
-  {
-    label: "San Francisco – Oakland Bay Bridge, United States",
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
-  },
-  {
-    label: "Bird",
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60"
-  },
-  {
-    label: "Bali, Indonesia",
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80"
-  },
-  {
-    label: "NeONBRAND Digital Marketing, Las Vegas, United States",
-    imgPath:
-      "https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60"
-  },
-  {
-    label: "Goč, Serbia",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60"
-  }
-];
 const styles = theme => ({
   main: {
     display: "flex",
@@ -250,9 +195,6 @@ class Home extends Component {
 
   render() {
     const { classes } = this.props;
-    const { theme } = this.props;
-
-    const maxSteps = tutorialSteps.length;
 
     const handleNext = () => {
       const newstep = this.state.activeStep + 1;

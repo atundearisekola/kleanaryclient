@@ -14,6 +14,15 @@ import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 //import { GitHubIcon } from 'rmw-shell/lib/components/Icons'
 //import { Helmet } from 'react-helmet'
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineOppositeContent,
+  TimelineDot
+} from "@material-ui/lab";
 import { NavLink } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Logo from '../logo.svg'
