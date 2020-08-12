@@ -24,20 +24,26 @@ import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+
 import Grid from "@material-ui/core/Grid";
-import Timeline from "@material-ui/lab/Timeline";
-import TimelineItem from "@material-ui/lab/TimelineItem";
-import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
-import TimelineConnector from "@material-ui/lab/TimelineConnector";
-import TimelineContent from "@material-ui/lab/TimelineContent";
-import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
+//import Timeline from "@material-ui/lab/Timeline";
+//import TimelineItem from "@material-ui/lab/TimelineItem";
+//import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
+//import TimelineConnector from "@material-ui/lab/TimelineConnector";
+//import TimelineContent from "@material-ui/lab/TimelineContent";
+//import TimelineOppositeContent from "@material-ui/lab/TimelineOppositeContent";
 //import TimelineDot from "@material-ui/lab/TimelineDot";
-import FastfoodIcon from "@material-ui/icons/Fastfood";
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineOppositeContent,
+  TimelineDot
+} from "@material-ui/lab";
 import LaptopMacIcon from "@material-ui/icons/LaptopMac";
-import HotelIcon from "@material-ui/icons/Hotel";
+
 import RepeatIcon from "@material-ui/icons/Repeat";
 import DepartureBoardIcon from "@material-ui/icons/DepartureBoard";
 import VpnLockIcon from "@material-ui/icons/VpnLock";
@@ -359,8 +365,9 @@ class Home extends Component {
                   <Typography variant="h6" component="h1"></Typography>
                 </TimelineOppositeContent>
                 <TimelineSeparator>
-                  <LaptopMacIcon />
-
+                  <TimelineDot>
+                    <LaptopMacIcon />
+                  </TimelineDot>
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent>
@@ -378,8 +385,9 @@ class Home extends Component {
               </TimelineItem>
               <TimelineItem>
                 <TimelineSeparator>
-                  <DepartureBoardIcon />
-
+                  <TimelineDot color="primary">
+                    <DepartureBoardIcon />
+                  </TimelineDot>
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent>
@@ -398,8 +406,9 @@ class Home extends Component {
               </TimelineItem>
               <TimelineItem>
                 <TimelineSeparator>
-                  <VpnLockIcon />
-
+                  <TimelineDot color="primary" variant="outlined">
+                    <VpnLockIcon />
+                  </TimelineDot>
                   <TimelineConnector className={classes.secondaryTail} />
                 </TimelineSeparator>
                 <TimelineContent>
@@ -418,7 +427,9 @@ class Home extends Component {
               </TimelineItem>
               <TimelineItem>
                 <TimelineSeparator>
-                  <RepeatIcon />
+                  <TimelineDot color="secondary">
+                    <RepeatIcon />
+                  </TimelineDot>
                 </TimelineSeparator>
                 <TimelineContent>
                   <Paper elevation={3} className={classes.paper}>
