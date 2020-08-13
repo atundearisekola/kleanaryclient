@@ -266,11 +266,11 @@ class Home extends Component {
               <div class="col-1-of-2">
                 <div class="composition">
                   <img
-                    srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                    srcset="img/laundry-1.jpg 300w, img/laundry-1.jpg 1000w"
                     sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                     alt="Photo 1"
                     class="composition__photo composition__photo--p1"
-                    src="img/nat-1-large.jpg"
+                    src="img/laundry-1.jpg"
                   />
 
                   <img
