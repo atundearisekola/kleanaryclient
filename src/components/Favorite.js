@@ -16,10 +16,8 @@ import {
   receiveStarchItem,
   setAuthLoader
 } from "../actions/AuthAction";
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 

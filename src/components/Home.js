@@ -214,11 +214,7 @@ class Home extends Component {
       <div className={classes.main}>
         <header class="header">
           <div class="header__logo-box">
-            <img
-              src="https://lh3.googleusercontent.com/proxy/B6u2MCiYc3X9ABciFm_JZuOm7qmQMoJc-cjiCPxpFy65bnXhwbwHDDuJFsC5USLkU0HStvcMP6UqgueddNGaH_RZbIoreGeF-G1cCcUD3mXGM9S12WH9ji4"
-              alt="Logo"
-              class="header__logo"
-            />
+            <img src="unnamed.png" alt="Logo" class="header__logo" />
           </div>
 
           <div class="header__text-box">
@@ -531,13 +527,13 @@ class Home extends Component {
           <div class="footer__logo-box">
             <picture class="footer__logo">
               <source
-                srcset="https://lh3.googleusercontent.com/proxy/B6u2MCiYc3X9ABciFm_JZuOm7qmQMoJc-cjiCPxpFy65bnXhwbwHDDuJFsC5USLkU0HStvcMP6UqgueddNGaH_RZbIoreGeF-G1cCcUD3mXGM9S12WH9ji4 1x, https://lh3.googleusercontent.com/proxy/B6u2MCiYc3X9ABciFm_JZuOm7qmQMoJc-cjiCPxpFy65bnXhwbwHDDuJFsC5USLkU0HStvcMP6UqgueddNGaH_RZbIoreGeF-G1cCcUD3mXGM9S12WH9ji4 2x"
+                srcset="unnamed.png 1x, unnamed.png 2x"
                 media="(max-width: 37.5em)"
               />
               <img
-                srcset="https://lh3.googleusercontent.com/proxy/B6u2MCiYc3X9ABciFm_JZuOm7qmQMoJc-cjiCPxpFy65bnXhwbwHDDuJFsC5USLkU0HStvcMP6UqgueddNGaH_RZbIoreGeF-G1cCcUD3mXGM9S12WH9ji4 1x, https://lh3.googleusercontent.com/proxy/B6u2MCiYc3X9ABciFm_JZuOm7qmQMoJc-cjiCPxpFy65bnXhwbwHDDuJFsC5USLkU0HStvcMP6UqgueddNGaH_RZbIoreGeF-G1cCcUD3mXGM9S12WH9ji4 2x"
+                srcset="unnamed.png 1x, unnamed.png 2x"
                 alt="Full logo"
-                src="https://lh3.googleusercontent.com/proxy/B6u2MCiYc3X9ABciFm_JZuOm7qmQMoJc-cjiCPxpFy65bnXhwbwHDDuJFsC5USLkU0HStvcMP6UqgueddNGaH_RZbIoreGeF-G1cCcUD3mXGM9S12WH9ji4"
+                src="unnamed.png"
               />
             </picture>
           </div>

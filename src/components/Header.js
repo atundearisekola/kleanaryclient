@@ -218,58 +218,80 @@ class Header extends Component {
         onClick={toggleDrawer(side, false)}
         onKeyDown={toggleDrawer(side, false)}
       >
-        <List>
-          <ListItem button>
-            <NavLink to="/">
-              {" "}
-              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+        <List className="side-nav">
+          <ListItem className="side-nav__item" button>
+            <NavLink className="side-nav__link" to="/">
+              <ListItemIcon className="side-nav__icon">
+                {<HomeIcon />}
+              </ListItemIcon>
               <ListItemText primary="Home" />
             </NavLink>
           </ListItem>
           {this.props.isAuthenticated ? (
             <div>
-              <ListItem button>
-                <NavLink to="/dashboard">
-                  <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+              <ListItem className="side-nav__item" button>
+                <NavLink className="side-nav__link" to="/dashboard">
+                  <ListItemIcon className="side-nav__icon">
+                    {<DashboardIcon />}
+                  </ListItemIcon>
                   <ListItemText primary="Dashboard" />
                 </NavLink>
               </ListItem>
-              <ListItem button>
-                <NavLink to="/request">
-                  <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+              <ListItem className="side-nav__item" button>
+                <NavLink className="side-nav__link" to="/request">
+                  <ListItemIcon className="side-nav__icon">
+                    {<AssignmentIcon />}
+                  </ListItemIcon>
+
                   <ListItemText primary="Request Laundry" />
                 </NavLink>
               </ListItem>
-              <ListItem button>
-                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                <NavLink to="/account">
+              <ListItem className="side-nav__item" button>
+                <NavLink className="side-nav__link" to="/account">
+                  <ListItemIcon className="side-nav__icon">
+                    {<AccountCircle />}
+                  </ListItemIcon>
                   <ListItemText primary="Account" />
                 </NavLink>
               </ListItem>
-              <ListItem button>
-                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                <NavLink to="/favorite">
+
+              <ListItem className="side-nav__item" button>
+                <NavLink className="side-nav__link" to="/favorite">
+                  <ListItemIcon className="side-nav__icon">
+                    {<FavoriteIcon />}
+                  </ListItemIcon>
                   <ListItemText primary="Favourite" />
                 </NavLink>
               </ListItem>
-              <ListItem button>
-                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                <NavLink to="/logout">
+
+              <ListItem className="side-nav__item" button>
+                <NavLink
+                  className="side-nav__link"
+                  to="/logout"
+                  onClick={Logout}
+                >
+                  <ListItemIcon className="side-nav__icon">
+                    {<LockOutlinedIcon />}
+                  </ListItemIcon>
                   <ListItemText primary="Logout" />
                 </NavLink>
               </ListItem>
             </div>
           ) : (
             <div>
-              <ListItem button>
-                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                <NavLink to="/login">
+              <ListItem className="side-nav__item" button>
+                <NavLink className="side-nav__link" to="/login">
+                  <ListItemIcon className="side-nav__icon">
+                    {<LockOutlinedIcon />}
+                  </ListItemIcon>
                   <ListItemText primary="Login" />
                 </NavLink>
               </ListItem>
-              <ListItem button>
-                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-                <NavLink to="/signup">
+              <ListItem className="side-nav__item" button>
+                <NavLink className="side-nav__link" to="/signup">
+                  <ListItemIcon className="side-nav__icon">
+                    {<LockOutlinedIcon />}
+                  </ListItemIcon>
                   <ListItemText primary="Register" />
                 </NavLink>
               </ListItem>

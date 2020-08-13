@@ -32,7 +32,7 @@ import NumberFormat from 'react-number-format';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import 'date-fns';
+import 'date-fns'; 
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -47,7 +47,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {requestLaundry,setLoader,verifyStack} from '../actions/LaundryAction'
 import {receiveLGA,receiveState,receiveCountry, receiveKleanaryItem} from '../actions/AuthAction'
-import { Carousel } from 'react-materialize';
+
 import '../App.css';
 import Dialog from '@material-ui/core/Dialog';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -59,8 +59,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
+
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import  { NavLink, withRouter } from 'react-router-dom';
 import Table from '@material-ui/core/Table';
@@ -478,7 +477,7 @@ const getStepContent=(stepIndex)=> {
                 </Button>
               </ButtonGroup>
             </div>
-
+ 
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid
                 item
