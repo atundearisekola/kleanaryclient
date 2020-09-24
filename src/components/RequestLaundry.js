@@ -39,6 +39,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Chip from '@material-ui/core/Chip';
 import Paper from '@material-ui/core/Paper';
 import {
+
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
@@ -74,48 +75,41 @@ import TableRow from '@material-ui/core/TableRow';
     import PaystackButton from 'react-paystack';
 import { Link } from '@material-ui/core';
 
-const styles=(theme) => ({
+const styles = theme => ({
   root: {
-    width: '100%',
-    
-     
-     '& > *': {
-      margin: theme.spacing(1),
-    },
-   
-  },
-   req: { 
-    display: 'flex',
-    margin:'auto',
-    marginBottom: '1rem',
+    width: "100%",
 
-   
-    
-    
-   
+    "& > *": {
+      margin: theme.spacing(1)
+    }
+  },
+  req: {
+    display: "flex",
+    margin: "auto",
+    marginBottom: "1rem"
   },
   backButton: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
   instructions: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
- 
-  margin: {
-    margin: theme.spacing(1),
-  },
-  textField: {
-    flexBasis: 200,
-  },
-    appBar: {
-    position: 'relative',
+    marginBottom: theme.spacing(1)
   },
 
-  
-  
-  
- 
+  margin: {
+    margin: theme.spacing(1)
+  },
+  textField: {
+    flexBasis: 200
+  },
+  appBar: {
+    position: "relative"
+    
+  },
+
+  title: {
+    marginRight: "auto"
+  }
 });
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -184,39 +178,40 @@ class RequestLaundry extends Component {
     super(props);
 
     this.state = {
-     
-      activeStep:0,
-      numberformat: '0',
+      activeStep: 0,
+      numberformat: "0",
       pickupDate: new Date(),
-      deliveryDate: new Date().addDays(this.props.pd,3),
-      name:"",
+      //  deliveryDate: new Date(),
+      deliveryDate: new Date().addDays(new Date(), 3),
+      name: "",
       qty: 1,
-      klist:[],
-      newList:[],
-      selectedFile:null,
-      selectedFiles:null,
-      imageSrcArray:[],
-      todoIron:[],
-      todoHang:[],
-      todoperfume:[],
-      todo:"",
-       shortNote:"",
-      email:this.props.user.email,
-      username:this.props.user.name,
-      phone:this.props.user.phone,
-      country:this.props.user.country,
-      state:this.props.user.state,
-      localgov:this.props.user.localgov,
-      addr:this.props.user.addr,
-      starch:this.props.user.favstarch,
-      perfume:this.props.user.favperf,
-      open:false,
-      loading:false,
-     
-        
-      
-      total:0,
+      klist: [],
+      newList: [],
+      selectedFile: null,
+      selectedFiles: null,
+      imageSrcArray: [],
+      todoIron: [],
+      todoHang: [],
+      todoperfume: [],
+      todo: "",
+      ironprice: 150 + parseInt(this.props.user.favstarch.starchprice),
+      totalprice: 0,
 
+      shortNote: "",
+      email: this.props.user.email,
+      username: this.props.user.name,
+      phone: this.props.user.phone,
+      country: this.props.user.country,
+      state: this.props.user.state,
+      localgov: this.props.user.localgov,
+      addr: this.props.user.addr,
+      starch: this.props.user.favstarch,
+      perfume: this.props.user.favperf,
+      open: false,
+      loading: false,
+      coupon: "",
+
+      total: 0
     };
   }
 
@@ -224,6 +219,8 @@ class RequestLaundry extends Component {
   componentDidMount(){
     this.props.receiveKleanaryItem();
     this.props.receiveCountry();
+
+    
   }
 
   render(){
@@ -236,12 +233,30 @@ console.log(this.props.klist)
     };
 
     const handlePDateChange = date => {
+      const ddate = new Date().addDays(new Date(date), 3)
     
-     this.setState({ ...this.state, pickupDate:date });
+     this.setState({ ...this.state, pickupDate: date, deliveryDate: ddate });
   };
    const handleDDateChange = date => {
+    const pd = new Date(this.state.pickupDate);
+     const dd = new Date(date);
     
-     this.setState({ ...this.state, deliveryDate:date });
+
+      var diff =  dd-pd;
+
+      var _second = 1000;
+      var _minute = _second * 60;
+      var _hour = _minute * 60;
+      var _day = _hour * 24;
+      var days = Math.floor(diff / _day);
+    
+     if (days < 3) {
+       alert("Delivery date should be minmum of  72 hours")
+     }else{
+        this.setState({ ...this.state, deliveryDate: date });
+     }
+
+    
   };
 
     
@@ -249,9 +264,45 @@ console.log(this.props.klist)
   
   const steps = getSteps();
 
+  const validateStep = ()=> {
+    switch (this.state.activeStep) {
+      case 0:
+        if (this.state.klist.length != 0 || this.state.todoIron.length != 0) {
+          return true;
+        }
+
+        break;
+
+      case 1:
+        return true;
+        break;
+      case 2:
+        if (
+          this.state.email != "" &&
+          this.state.addr != "" &&
+          this.state.phone != "" &&
+           this.state.localgov != "" &&
+            this.state.country != "" &&
+             this.state.username != "" 
+        ) {
+          return true;
+        }
+        break;
+
+      default:
+        return false;
+        break;
+    }
+
+  }
+
   const handleNext = () => {
-    const newstep = this.state.activeStep + 1;
-    this.setState({...this.state, activeStep: newstep});
+  const  validatestep = validateStep();
+    if (validatestep) {
+       const newstep = this.state.activeStep + 1;
+       this.setState({ ...this.state, activeStep: newstep });
+    }
+   
   };
 
   const handleBack = () => {
@@ -290,6 +341,7 @@ console.log(this.props.klist)
       favstarch: this.state.starch,
       favperfume: this.state.perfume,
       token: this.props.token,
+      coupon: this.state.coupon,
       }
 
       this.props.requestLaundry(data);
@@ -341,9 +393,16 @@ const getStepContent=(stepIndex)=> {
                   ? this.props.klist.map(option => (
                       <MenuItem
                         key={option.kname}
-                        value={option.kname + "|" + option.kprice}
+                        value={
+                          option.kname +
+                          "|" +
+                        (  parseInt(option.kprice) + parseInt(this.state.starch.starchprice))
+                        }
                       >
-                        {option.kprice + " - " + option.kname}
+                        {parseInt(option.kprice) +
+                          parseInt(this.state.starch.starchprice) +
+                          " - " +
+                          option.kname}
                       </MenuItem>
                     ))
                   : null}
@@ -477,7 +536,7 @@ const getStepContent=(stepIndex)=> {
                 </Button>
               </ButtonGroup>
             </div>
- 
+
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <Grid
                 item
@@ -881,36 +940,48 @@ const getStepContent=(stepIndex)=> {
       return 'Unknown stepIndex';
   }
 }
-
+const payWithCash = ()=>{
+  this.props.setLoader(true);
+  const data = {
+    txtype: "Cash",
+    txref: this.props.request.data.txref
+  };
+  this.props.verifyStack(data);
+}
 const handleLaundry = (e) => {
     e.preventDefault();
+   
       var name = this.state.name;
-      var names = name.split('|');
+       const qty = this.state.qty;
+       if (name =="" || qty <= 0) {
+      return;
+    } else {
+
+      var names = name.split("|");
       var kl = names[0];
       var kp = names[1];
       var newkp = kl;
-      var newList="";
+      var newList = "";
 
-      const qty = this.state.qty;
-      const subt = qty*kp;
-      const data ={kname:kl, kprice: kp, qty:qty, subtotal: subt, };
-   
-    if(this.state.klist.length > 0 ){
+      const subt = qty * kp;
+      const data = { kname: kl, kprice: kp, qty: qty, subtotal: subt };
 
-      this.state.klist.forEach(element => {
-       if (element.kname==newkp) {
-         delLaundry(newkp);
-       }else{
-          let klist = [...this.state.klist, data];
-        this.setState({klist})
-                
-       }
-     })
-
-}else{
+      if (this.state.klist.length > 0) {
+        this.state.klist.forEach(element => {
+          if (element.kname == newkp) {
+            delLaundry(newkp);
+          } else {
+            let klist = [...this.state.klist, data];
+            this.setState({ klist });
+          }
+        });
+      } else {
         let klist = [...this.state.klist, data];
-        this.setState({klist})
-}
+        this.setState({ klist });
+      }
+      
+    }
+      
       
       
   };
@@ -1001,6 +1072,20 @@ const handleLaundry = (e) => {
       
     }
 
+    const todoIronPrice =
+      this.state.todo == "iron" ? (
+        <Typography variant="h6" className={classes.title}>
+          &#8358; {this.state.todoIron.length * this.state.ironprice}
+        </Typography>
+      ) : null;
+
+       const todoPerfumePrice =
+         this.state.todo == "perfume" ? (
+           <Typography variant="h6" className={classes.title}>
+             &#8358;{" "}
+             {this.state.todoperfume.length * parseInt(this.state.perfume.perfprice)}
+           </Typography>
+         ) : null;
     
 
     const todoImage = this.state.imageSrcArray.length > 0 ? (
@@ -1018,10 +1103,10 @@ const handleLaundry = (e) => {
           }
         }
         return( 
-         <Grid item xs={4} md={3} lg={2}  key={imgSrc.filename}>
+         <Grid item xs={6} md={3} lg={2}  key={imgSrc.filename}>
         <div  >
           <a  onClick={()=>{addToToDo('iron',imgSrc.filename,imgSrc.url)}}>
-          <img className={style}  id={imgSrc.filename} width="150" height="150" src={imgSrc.url}   />
+          <img className={style}  id={imgSrc.filename} width="180" height="180" src={imgSrc.url}   />
           </a>
         
       </div>
@@ -1039,10 +1124,10 @@ const handleLaundry = (e) => {
           }
         }
         return( 
-         <Grid item xs={4} md={3} lg={2}  key={imgSrc.filename}>
+         <Grid item xs={6} md={3} lg={2}  key={imgSrc.filename}>
         <div  >
           <a  onClick={()=>{addToToDo('hang',imgSrc.filename,imgSrc.url)}}>
-          <img className={style}  id={imgSrc.filename} width="150" height="150" src={imgSrc.url}   />
+          <img className={style}  id={imgSrc.filename} width="180" height="180" src={imgSrc.url}   />
           </a>
         
       </div>
@@ -1060,10 +1145,10 @@ const handleLaundry = (e) => {
           }
         }
         return( 
-         <Grid item xs={4} md={3} lg={2}  key={imgSrc.filename}>
+         <Grid item xs={6} md={3} lg={2}  key={imgSrc.filename}>
         <div  >
           <a  onClick={()=>{addToToDo('perfume',imgSrc.filename,imgSrc.url)}}>
-          <img className={style}  id={imgSrc.filename} width="150" height="150" src={imgSrc.url}   />
+          <img className={style}  id={imgSrc.filename} width="180" height="180" src={imgSrc.url}   />
           </a>
         
       </div>
@@ -1192,9 +1277,18 @@ const handleLaundry = (e) => {
     }
 
     const callback = (response) => {
-      this.props.setLoader(true);
-      this.props.verifyStack(response);
-    		console.log(response); // card charged successfully, get reference here
+      if (response.status == "success") {
+        this.props.setLoader(true);
+        const data = {
+          txref: response.reference,
+         // amount: response.amount,
+          status: response.status,
+          txtype: 'paystack',
+        }
+        this.props.verifyStack(data);
+        console.log(response); // card charged successfully, get reference here
+      }
+     
     	}
 
     const	close = () => {
@@ -1213,83 +1307,145 @@ const handleLaundry = (e) => {
       </Stepper>
       <div>
         {this.state.activeStep === steps.length ? (
-          <div>
-            {this.props.loader ? (
-              <div>
-                <CircularProgress />
-              </div>
-            ) : (
-              <div>
-                {this.props.request.status == 200 ? (
+          <div className="container">
+            <section className="favorite">
+              <div classsName="form">
+                {this.props.loader ? (
                   <div>
-                    <br />
-                    <p>
-                      <PaystackButton
-                        text="Make Payment"
-                        className="payButton btn btn-primary"
-                        callback={callback}
-                        close={close}
-                        disabled={false}
-                        embed={false}
-                        reference={this.props.request.data.txref}
-                        email={this.props.request.data.email}
-                        amount={this.props.request.data.totalprice}
-                        paystackkey={this.props.request.data.pkey}
-                        tag="button"
-                      />
-                    </p>
-                    <div>
-                      <Typography className={classes.instructions}>
-                        All steps completed
-                      </Typography>
-                      <Button
-                        disabled={this.state.activeStep === 0}
-                        onClick={handleBack}
-                        className={classes.backButton}
-                         className="btn--green btn--center"
-                      >
-                        Back
-                      </Button>
-                      <Button  className="btn--green btn--center" onClick={handleReset}>Checkout</Button>
-                    </div>
+                    <CircularProgress />
                   </div>
                 ) : (
                   <div>
-                    <Typography className={classes.instructions}>
-                      All steps completed
-                    </Typography>
-                    <Button
-                      disabled={this.state.activeStep === 0}
-                      onClick={handleBack}
-                      className={classes.backButton}
-                       className="btn--green btn--center"
-                    >
-                      Back
-                    </Button>
-                    <Button  className="btn--green btn--center" onClick={handleReset}>Checkout</Button>
+                    {this.props.request.status == 200 ? (
+                      this.props.payment_response ? (
+                        this.props.payment_response.status == 200 ? (
+                          <div>
+                            <h1 class="heading-tertiary u-margin-bottom-small u-center-text">
+                              Transaction Successful
+                            </h1>
+                            <p class="paragraph u-margin-bottom-small">
+                              Hi {this.props.user.username}
+                            </p>
+                            <h3 class="heading-secondry u-margin-bottom-small u-center-text">
+                              Thanks you for your patronage
+                            </h3>
+                            <p class="paragraph u-margin-bottom-small">
+                              The laundry transaction you made was successful,
+                            </p>
+                            <p class="paragraph u-margin-bottom-small">
+                              transaction total amount is &#8358;
+                              {this.props.payment_response.laundry.totalprice}
+                            </p>
+                            <p class="paragraph u-margin-bottom-small">
+                              payment status{" "}
+                              {
+                                this.props.payment_response.laundry
+                                  .paymentstatus
+                              }
+                            </p>
+                            <Button
+                              className="btn--green btn btn-primary btn--center"
+                              onClick={() =>
+                                this.props.history.push("/dashboard")
+                              }
+                            >
+                              Continue >
+                            </Button>
+                          </div>
+                        ) : (
+                          ""
+                        )
+                      ) : (
+                        <div>
+                          {}
+                          <PaystackButton
+                            text="Make Payment"
+                            className="payButton btn btn-primary btn--center"
+                            callback={callback}
+                            close={close}
+                            disabled={false}
+                            embed={false}
+                            reference={this.props.request.data.txref}
+                            email={this.props.request.data.email}
+                            amount={this.props.request.data.totalprice}
+                            paystackkey={this.props.request.data.pkey}
+                            tag="button"
+                          />
+
+                          <Button
+                            className="btn--green btn--center"
+                            onClick={payWithCash}
+                          >
+                            Pay with Cash
+                          </Button>
+                        </div>
+                      )
+                    ) : (
+                      <div>
+                        <Typography className={classes.instructions}>
+                          All steps completed
+                        </Typography>
+                        <TextField
+                          label="Coupon"
+                          className="form__group"
+                          id="coupon"
+                          name="coupon"
+                          value={this.state.coupon}
+                          type="text"
+                          placeholder="Coupon"
+                          onChange={handleInput}
+                          fullWidth
+                          margin="normal"
+                          InputLabelProps={{
+                            shrink: true
+                          }}
+                          variant="outlined"
+                        />
+
+                        <Button
+                          disabled={this.state.activeStep === 0}
+                          onClick={handleBack}
+                          className={classes.backButton}
+                          className="btn--green btn--center"
+                        >
+                          Back
+                        </Button>
+
+                        <Button
+                          className="btn--green btn--center"
+                          onClick={handleReset}
+                        >
+                          Checkout
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
-            )}
+            </section>
           </div>
         ) : (
           <div>
             <div className="container">
-            <Typography className={classes.instructions}>
-              {getStepContent(this.state.activeStep)}
-              
-            </Typography>
+              <Typography className={classes.instructions}>
+                {getStepContent(this.state.activeStep)}
+              </Typography>
             </div>
             <div>
               <Button
                 disabled={this.state.activeStep === 0}
                 onClick={handleBack}
                 className={classes.backButton}
-                 className="btn--green btn--center"
+                className="btn--green btn--center"
               >
                 Back
               </Button>
-              <Button  className="btn--green btn--center" variant="contained" color="primary" onClick={handleNext}>
+              <Button
+                className="btn--green btn--center"
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+              >
                 {this.activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             </div>
@@ -1316,6 +1472,9 @@ const handleLaundry = (e) => {
             <Typography variant="h6" className={classes.title}>
               Select laundry images
             </Typography>
+
+            {todoIronPrice}
+            {todoPerfumePrice}
             <Button autoFocus color="inherit" onClick={handleClose}>
               Ok
             </Button>
@@ -1343,23 +1502,21 @@ const mapDispatchToProps = dispatch =>{
 }
 
 const mapStateToProps = (state,ownProps) =>{
-    return{
-         
-         klist: state.AuthReducer.klist,
-         id: ownProps.match.params.laundry_id,
-         user:state.AuthReducer.user,
-         token:state.AuthReducer.access_token,
-         request: state.LaundryReducer.requestdetail,
-         history: ownProps.history,
-         loader: state.LaundryReducer.loader,
-         perfumes: state.AuthReducer.perfumelist,
-         starchs: state.AuthReducer.starchlist,
-          lgas: state.AuthReducer.lgas,
-         states: state.AuthReducer.states,
-         countries: state.AuthReducer.countries,
-         pd: new Date(),
-         
-    }
+    return {
+      klist: state.AuthReducer.klist,
+      id: ownProps.match.params.laundry_id,
+      user: state.AuthReducer.user,
+      token: state.AuthReducer.access_token,
+      request: state.LaundryReducer.requestdetail,
+      history: ownProps.history,
+      loader: state.LaundryReducer.loader,
+      payment_response: state.LaundryReducer.payment_response,
+      perfumes: state.AuthReducer.perfumelist,
+      starchs: state.AuthReducer.starchlist,
+      lgas: state.AuthReducer.lgas,
+      states: state.AuthReducer.states,
+      countries: state.AuthReducer.countries
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(RequestLaundry));

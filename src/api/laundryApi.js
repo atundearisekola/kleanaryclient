@@ -18,6 +18,8 @@ export async function requestApi(data) {
     })
     .catch(function(error) {
       console.log(error);
+      console.log(error.response.status);
+      console.log(error.response.data);
       return error;
     });
 }
@@ -29,13 +31,15 @@ export async function verifyStackApi(data) {
 
   console.log(data);
   return await axios
-    .post("http://127.0.0.1:8000/api/payment/callback", data)
+    .post("http://127.0.0.1:8000/api/give", data)
     .then(function(response) {
       console.log(response);
       return response;
     })
     .catch(function(error) {
       console.log(error);
+      console.log(error.response.status);
+      console.log(error.response.data);
       return error;
     });
 }
@@ -110,6 +114,8 @@ export async function confirmStatusApi(data) {
     })
     .catch(function(error) {
       console.log(error);
+      console.log(error.response.status);
+      console.log(error.response.data);
       return error;
     });
 }

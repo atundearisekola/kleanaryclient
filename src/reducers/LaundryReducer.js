@@ -22,7 +22,7 @@ let initState = {
   singleLaundry: {},
   pendinglaundries: [],
   deliveredlaundries: [],
-
+  payment_response: undefined,
   requestdetail: []
 };
 const LaundryReducer = handleAction(
@@ -67,7 +67,7 @@ const LaundryReducer = handleAction(
         case PAYSTACK:
           return {
             ...state,
-            payment_response: action.payload,
+            payment_response: action.payload.data,
             loader: false
           };
           break;
@@ -76,7 +76,9 @@ const LaundryReducer = handleAction(
           return {
             ...state,
             pendinglaundries: action.payload,
-            loader: false
+            loader: false,
+            payment_response: undefined,
+            requestdetail: []
           };
           break;
 
@@ -121,7 +123,7 @@ const LaundryReducer = handleAction(
         case PAYSTACK:
           return {
             ...state,
-            payment_response: action.payload,
+            payment_response: undefined,
             loader: false
           };
           break;

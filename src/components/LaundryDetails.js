@@ -241,7 +241,7 @@ class LaundryDetails extends Component{
 
    
 
-      let templist = this.props.laundries.kleanaryinput !=undefined?(
+      let templist = this.props.laundries.kleanaryinput ?(
          stringToJson(this.props.laundries.kleanaryinput.slice(0, this.props.laundries.kleanaryinput.length-1)).map(row=>{
        
         return (
@@ -273,7 +273,7 @@ class LaundryDetails extends Component{
     }
 
    
- const todoImage = this.props.laundries.laundryimg !=undefined?(
+ const todoImage = this.props.laundries.laundryimg ?(
          stringToJson(this.props.laundries.laundryimg.slice(0, this.props.laundries.laundryimg.length-1)).map(imgSrc =>{
            var style = "greyy";
 console.log(imgSrc)
@@ -284,7 +284,7 @@ console.log(imgSrc)
             console.log(this.state.todo)
              //  var iron = this.props.laundries.todoiron.split(',');
              var iron = this.props.laundries.todoiron;
-         // console.log(iron)
+          console.log(iron)
          iron= iron.slice(0, iron.length-1);
               iron = stringToJson(iron);
             for (let y = 0; y < iron.length; y++) {
@@ -411,6 +411,13 @@ console.log(imgSrc)
                   secondary={this.props.laundries.lstatus}
                 />
               </ListItem>
+              <ListItem>
+                <ListItemText
+                  primary="Payment Status"
+                  secondary={this.props.laundries.paymentstatus}
+                />
+              </ListItem>
+
               <ListItem>
                 <ListItemText
                   primary="Country"
@@ -558,40 +565,33 @@ console.log(imgSrc)
             <p> {this.props.laundries.shortnote} </p>
             <div>
               {this.props.laundries.lstatus == "PICKING" ? (
-                
-                  <Button
-                    className="btn btn--white u-margin-top-big u-center-text"
-                    onClick={() =>
-                      this.props.confirmStatus({
-                        status: "PICKED",
-                        id: this.props.laundries.id
-                      })
-                    }
-                  >
-                    Confirm Pickup
-                  </Button>
-                
-              ) : null
-                
-             }
+                <Button
+                  className="btn btn--white u-margin-top-big u-center-text"
+                  onClick={() => {
+                    this.props.setLoader(true);
+                    this.props.confirmStatus({
+                      status: "PICKED",
+                      id: this.props.laundries.id
+                    });
+                  }}
+                >
+                  Confirm Pickup
+                </Button>
+              ) : null}
 
               {this.props.laundries.lstatus == "DELIVERING" ? (
-                
-                  <Button
-                    className="btn btn--white u-margin-top-big u-center-text"
-                    onClick={() =>{
-                       this.props.setLoader(true);
-                        this.props.confirmStatus({
-                          status: "DELIVERED",
-                          id: this.props.laundries.id
-                        });
-                    }
-                     
-                    }
-                  >
-                    Confirm Delivery
-                  </Button>
-                
+                <Button
+                  className="btn btn--white u-margin-top-big u-center-text"
+                  onClick={() => {
+                    this.props.setLoader(true);
+                    this.props.confirmStatus({
+                      status: "DELIVERED",
+                      id: this.props.laundries.id
+                    });
+                  }}
+                >
+                  Confirm Delivery
+                </Button>
               ) : null}
             </div>
           </div>

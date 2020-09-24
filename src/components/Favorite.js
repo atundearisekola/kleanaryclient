@@ -106,14 +106,18 @@ class Favorite extends Component {
             >
               <div className="favorite-box">
                 <h5 className="favorite-box__title">Perfume</h5>
-                <p className="favorite__name">
-                  {" "}
-                  {this.props.favperfume.perfname}{" "}
-                </p>
-                <p className="favorite__price">
-                  {this.props.favperfume.perfprice}
-                  &#8358;
-                </p>
+                {this.props.favstarch ? (
+                  <>
+                    <p className="favorite__name">
+                      {" "}
+                      {this.props.favperfume.perfname}{" "}
+                    </p>
+                    <p className="favorite__price">
+                      {this.props.favperfume.perfprice}
+                      &#8358;
+                    </p>
+                  </>
+                ) : null}
 
                 <TextField
                   id="perfume"
@@ -138,9 +142,7 @@ class Favorite extends Component {
                       {this.props.favperfume.perfname} &#8358;
                       {this.props.favperfume.perfprice}
                     </MenuItem>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                   {this.props.perfumes.map(option => (
                     <MenuItem
                       key={option.perfname}
@@ -154,15 +156,21 @@ class Favorite extends Component {
 
               <div className="favorite-box">
                 <h5 className="favorite-box__title">Starch</h5>
-                <p className="favorite__name">
-                  {" "}
-                  {this.props.favstarch.starchname}{" "}
-                </p>
-                <p className="favorite__price">
-                  {" "}
-                  {this.props.favstarch.starchprice}
-                  &#8358;
-                </p>
+
+                {this.props.favstarch ? (
+                  <>
+                    <p className="favorite__name">
+                      {" "}
+                      {this.props.favstarch.starchname}{" "}
+                    </p>
+                    <p className="favorite__price">
+                      {" "}
+                      {this.props.favstarch.starchprice}
+                      &#8358;
+                    </p>
+                  </>
+                ) : null}
+
                 <TextField
                   id="starch"
                   select
@@ -188,9 +196,7 @@ class Favorite extends Component {
                       {this.props.favstarch.starchname} &#8358;
                       {this.props.favstarch.starchprice}
                     </MenuItem>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                   {this.props.starchs.map(option => (
                     <MenuItem
                       key={option.starchname}

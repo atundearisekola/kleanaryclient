@@ -15,6 +15,7 @@ import SignupForm from "./components/SignupForm";
 import Dashboard from "./components/Dashboard";
 import LaundryDetails from "./components/LaundryDetails";
 import Checkout from "./components/Checkout";
+import PaymentResponse from "./components/paymentresponse";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import GuestRoute from "./routes/GuestRoute";
 import AuthRoute from "./routes/AuthRoute";
@@ -40,7 +41,7 @@ class App extends Component {
             <GuestRoute path="/login" component={LoginForm} />
             <GuestRoute path="/signup" component={SignupForm} />
             <AuthRoute path="/dashboard" component={Dashboard} />
-            <AuthRoute path="/checkout" component={Checkout} />
+            <AuthRoute path="/request_response" component={PaymentResponse} />
             <AuthRoute path="/:laundry_id" component={LaundryDetails} />
           </Switch>
         </div>
