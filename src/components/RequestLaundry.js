@@ -1188,7 +1188,7 @@ const handleLaundry = (e) => {
                let todoIron = [...this.state.todoIron, data];
         
         this.setState({todoIron})
-         document.getElementById(filename).style.borderColor="green";
+         document.getElementById(filename).style.borderColor="ligtblue";
             }
 
           }else{
@@ -1196,7 +1196,7 @@ const handleLaundry = (e) => {
                let todoIron = [...this.state.todoIron, data];
         
         this.setState({todoIron})
-         document.getElementById(filename).style.borderColor="green";
+         document.getElementById(filename).style.borderColor = "ligtblue";
           }
           
           break;
@@ -1223,7 +1223,7 @@ const handleLaundry = (e) => {
                let todoHang = [...this.state.todoHang, data];
         
         this.setState({todoHang})
-         document.getElementById(filename).style.borderColor="green";
+         document.getElementById(filename).style.borderColor = "ligtblue";
             }
 
           }else{
@@ -1231,7 +1231,7 @@ const handleLaundry = (e) => {
                let todoHang = [...this.state.todoHang, data];
         
         this.setState({todoHang})
-         document.getElementById(filename).style.borderColor="green";
+         document.getElementById(filename).style.borderColor = "ligtblue";
           }
           
           break;
@@ -1258,7 +1258,7 @@ const handleLaundry = (e) => {
                let todoperfume = [...this.state.todoperfume, data];
         
         this.setState({todoperfume})
-         document.getElementById(filename).style.borderColor="green";
+         document.getElementById(filename).style.borderColor = "ligtblue";
             }
 
           }else{
@@ -1266,7 +1266,7 @@ const handleLaundry = (e) => {
                let todoperfume = [...this.state.todoperfume, data];
         
         this.setState({todoperfume})
-         document.getElementById(filename).style.borderColor="green";
+         document.getElementById(filename).style.borderColor = "ligtblue";
           }
           
           break;
