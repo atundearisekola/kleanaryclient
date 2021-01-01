@@ -47,6 +47,7 @@ var defaultState = {
   states: [],
   countries: []
 };
+
 const AuthReducer = handleAction(
   combineActions(
     Authentication,
