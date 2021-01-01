@@ -186,7 +186,7 @@ const AuthReducer = handleAction(
         case AUTH:
           return {
             ...state,
-            isAuthenticated: true,
+            isAuthenticated: false,
             error: action.payload,
             loader: false
           };
