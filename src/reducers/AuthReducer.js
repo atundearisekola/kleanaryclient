@@ -32,7 +32,7 @@ import {
 } from "../actions/AuthAction";
 
 var defaultState = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   user: {},
   error: [],
   data: [],
