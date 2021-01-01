@@ -232,7 +232,7 @@ const AuthReducer = handleAction(
           return {
             ...state,
             refresh: action.payload,
-            isAuthenticated: true,
+            isAuthenticated: false,
 
             loader: false
           };
