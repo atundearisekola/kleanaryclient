@@ -5,13 +5,14 @@ const axios = require("axios");
 var cors = require("cors");
 
 cors();
+const APP_URL = "http://https://kleanary.herokuapp.com";
 
 export async function requestApi(data) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
 
   console.log(data);
   return await axios
-    .post("http://127.0.0.1:8000/api/requestlaundry", data)
+    .post(`${APP_URL}/api/requestlaundry`, data)
     .then(function(response) {
       console.log(response);
       return response;
@@ -31,7 +32,7 @@ export async function verifyStackApi(data) {
 
   console.log(data);
   return await axios
-    .post("http://127.0.0.1:8000/api/give", data)
+    .post(`${APP_URL}/api/give`, data)
     .then(function(response) {
       console.log(response);
       return response;
@@ -51,7 +52,7 @@ export async function getPLApi() {
     loadState().AuthReducer.access_token
   }`;
   return await axios
-    .get("http://127.0.0.1:8000/api/requestpl")
+    .get(`${APP_URL}/api/requestpl`)
     .then(function(response) {
       console.log(response);
       return response;
@@ -69,7 +70,7 @@ export async function getDLApi() {
     loadState().AuthReducer.access_token
   }`;
   return await axios
-    .get("http://127.0.0.1:8000/api/requestdl")
+    .get(`${APP_URL}/api/requestdl`)
     .then(function(response) {
       console.log(response);
       return response;
@@ -89,7 +90,7 @@ export async function getLApi(data) {
 
   console.log(data);
   return await axios
-    .post("http://127.0.0.1:8000/api/laundrydetail", data)
+    .post(`${APP_URL}/api/laundrydetail`, data)
     .then(function(response) {
       console.log(response);
       return response;
@@ -107,7 +108,7 @@ export async function confirmStatusApi(data) {
 
   console.log(data);
   return await axios
-    .post("http://127.0.0.1:8000/api/confirm-status", data)
+    .post(`${APP_URL}/api/confirm-status`, data)
     .then(function(response) {
       console.log(response);
       return response;
